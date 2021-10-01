@@ -1,7 +1,7 @@
 class ChevroletCorsa {
 	var color = null
 	
-	method capacidad(){return 4}// comentarios
+	method capacidad(){return 4}
 	method velocidad(){return 150}
 	method peso(){return 1300}
 	method setColor(nuevoColor){color = nuevoColor}
@@ -19,36 +19,38 @@ class RenaultKwid {
 }
 
 object trafic{
-				
-	method capacidad(){return interior.capacidad()}
-	method velocidad(){return motor.velocidad()}
-	method color(){return "blanco"}
-	method peso(){return 4000 + motor.peso() + interior.peso()}
-}
-
-object motor{
-		var tipo = "pulenta"
-				
-		method peso(){return if (tipo == "pulenta") 800 else 500}
-		method velocidad(){return if (tipo == "pulenta") 130 else 80}
-		method cambiarTipo(nuevoTipo){tipo = nuevoTipo}
-		method tipo(){return tipo}
-}
-
-object interior{
-	var tipo = "comodo"
+	var interior = "comodo"
+	var motor = "pulenta"			
 	
-	method peso(){return if (tipo == "comodo") 700 else 1000}
-	method capacidad(){return if (tipo == "comodo") 5 else 12}
-	method cambiarTipo(nuevoTipo){tipo = nuevoTipo}
-	method tipo(){return tipo}
+	method cambiarMotor(tipo){motor = tipo}
+	method cambiarInterior(tipo){interior = tipo}
+	method tipoDeMotor(){return motor}
+	method tipoDeInterior(){return interior}
+	method capacidad(){return if (interior == "comodo") 5 else 12}
+	method velocidad(){return if (motor == "pulenta") 130 else 80}
+	method color(){return "blanco"}
+	method peso(){
+		return 
+			4000 + 
+			if (motor == "pulenta") 800 else 500 +
+			if (interior == "comodo") 700 else 1000
+	}
 }
 
 class AutoEspecial{
-	method capacidad(){return 4}
+	var color = null
+	var capacidad = null
+	var velocidad = null
+	var peso = null
+	
+	method asignarColor(nuevoColor){color = nuevoColor}
+	method asignarCapacidad(nuevaCapacidad){capacidad = nuevaCapacidad}
+	method asignarVelocidad(nuevaVelocidad){velocidad = nuevaVelocidad}
+	method asignarPeso(nuevoPeso){peso = nuevoPeso}
+	method capacidad(){return 5}
 	method peso(){return 1300}
 	method velocidad(){return 180}
-	method color(){return ""}
+	method color(){return color}-
 }
 
 

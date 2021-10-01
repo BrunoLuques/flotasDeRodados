@@ -2,8 +2,10 @@ import flota.*
 
 class Dependencia{
 	var property flota = []
-	const cantidadDeEmpleados = 0
+	var cantidadDeEmpleados = 0
 	
+	method cantidadDeEmpleados(){return cantidadDeEmpleados}
+	method asignarCantidadDeEmpleados(cantidad){cantidadDeEmpleados = cantidad}
 	method agregarAFlota(rodado){flota.add(rodado)}
 	method quitarDeFlota(rodado){flota.remove(rodado)}
 	method pesoTotalFlota(){
@@ -39,7 +41,7 @@ class Dependencia{
 	
 	method esGrande(){
 		return
-			cantidadDeEmpleados >= 40 and flota.size() == 5
+			cantidadDeEmpleados >= 40 and flota.size() >= 5
 	}
 }
 
