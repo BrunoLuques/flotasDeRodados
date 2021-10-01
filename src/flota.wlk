@@ -1,7 +1,7 @@
 class ChevroletCorsa {
 	var color = null
 	
-	method capacidad(){return 4}
+	method capacidad(){return 4}// comentarios
 	method velocidad(){return 150}
 	method peso(){return 1300}
 	method setColor(nuevoColor){color = nuevoColor}
