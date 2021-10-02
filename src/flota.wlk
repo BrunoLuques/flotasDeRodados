@@ -50,7 +50,7 @@ class AutoEspecial{
 	method capacidad(){return 5}
 	method peso(){return 1300}
 	method velocidad(){return 180}
-	method color(){return color}-
+	method color(){return color}
 }
 
 
