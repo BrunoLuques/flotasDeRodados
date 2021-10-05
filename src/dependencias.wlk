@@ -1,52 +1,33 @@
 import flota.*
 
-class Dependencia{
-	var property flota = []
-	var cantidadDeEmpleados = 0
+
+class Dependencia {
+	var property autos = []
+	var property empleados
 	
-	method cantidadDeEmpleados(){return cantidadDeEmpleados}
-	method asignarCantidadDeEmpleados(cantidad){cantidadDeEmpleados = cantidad}
-	method agregarAFlota(rodado){flota.add(rodado)}
-	method quitarDeFlota(rodado){flota.remove(rodado)}
-	method pesoTotalFlota(){
-		return
-			flota.sum({flot => flot.peso()})
-	}
+	method agregarAFlota(rodado) {autos.add(rodado)}
+	method quitarDeFlota(rodado) {autos.remove(rodado)}
+	method pesoTotalFLota(){return autos.sum{auto => auto.peso()}}
 	
 	method estaBienEquipada(){
-		return
-			flota.size() >= 3 and flota.all({flot => flot.velocidad() >= 100})
+		return autos.size() >= 3 and autos.all{auto => auto.velocidadMaxima() >= 100}
 	}
-	
 	method capacidadTotalEnColor(color){
-		return
-			flota.filter({flot => flot.color() == color}).sum({cap => cap.capacidad()}) 
-			
+		return autos.filter{auto => auto.color() == color}.sum{auto => auto.capacidad()}
 	}
-	
-	method capacidadTotalDeLaFlota(){
-		return
-			flota.sum({cap => cap.capacidad()})
-	}
-	
 	method colorDelRodadoMasRapido(){
-		return 
-			flota.max({vel => vel.velocidad()}).color()	
+		return autos.max{auto => auto.velocidadMaxima()}.color()
 	}
-	
 	method capacidadFaltante(){
-		return
-			self.capacidadTotalDeLaFlota() - cantidadDeEmpleados
+		return empleados - self.capacidadTotal()
 	}
-	
+	method capacidadTotal(){
+		return autos.sum{auto => auto.capacidad()}
+	}
 	method esGrande(){
-		return
-			cantidadDeEmpleados >= 40 and flota.size() >= 5
+		return empleados >= 40 and autos.size() >= 5
 	}
 }
-
-
-
 
 
 

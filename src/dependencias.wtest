@@ -1,3 +1,25 @@
 import dependencias.*
 import flota.*
 
+test "general"{
+	const cachito = new ChevroletCorsa(color = "rojo")
+	const cultura = new Dependencia()
+	cultura.agregarAFlota(cachito)
+	cultura.empleados(31)
+	
+	const deportes = new Dependencia()
+	deportes.empleados(45)
+	const corsaDeportes1 = new ChevroletCorsa(color = "azul")
+	const corsaDeportes2 = new ChevroletCorsa(color = "verde")
+	deportes.agregarAFlota(cachito)
+	deportes.agregarAFlota(new RenaultKwid(tieneTanqueAdicional = true))
+	deportes.agregarAFlota(new AutoEspecial(capacidad = 5, velocidadMaxima = 160, peso = 1200, color ="beige"))
+	
+	assert.equals(cachito.color(), "rojo")
+}
+
+/*un auto especial con estas características: 
+ capacidad 5 pasajeros, 
+ velocidad máxima 160 km/h, 
+ peso 1200 kg, color beige.
+ */

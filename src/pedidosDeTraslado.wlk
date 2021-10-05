@@ -1,20 +1,20 @@
 import flota.*
 import dependencias.*
 
-class PedidoDeTraslado{
-	var distancia = null
-	var tiempo = null
-	var cantidadDePasajeros = null
-	var property coloresIncomopatibles =[]
+class Pedidos {
+	var property distancia
+	var property tiempo
+	var property cantPasajeros
+	const property coloresIncompatibles = []
 	
-	method distancia(){return distancia}
-	method tiempo(){return tiempo}
-	method cantidadDePasajeros(){return cantidadDePasajeros}
-	method asignarCantidadDePasajeros(cantidad){cantidadDePasajeros = cantidad}
-	method asignarDistancia(kilometros){distancia = kilometros}
-	method asignarTiempo(horas){tiempo = horas}
-	method agregarColorIncompatible(color){coloresIncomopatibles.add(color)}
-	method sacarColorIncompatible(color){coloresIncomopatibles.remove(color)}
-	method velocidadRequerida(){}
-	method puedeSatisfacerUnPedido(auto){}
+	method velocidadRequerida(){
+		return distancia / tiempo
+	}
+	
+	method puedeSatisfacer(auto){
+		return 
+			auto.velocidadMaxima() - self.velocidadRequerida() >= 10 and
+			auto.capacidad() >= cantPasajeros and
+			not coloresIncompatibles.contains(auto.color())
+	}
 }
